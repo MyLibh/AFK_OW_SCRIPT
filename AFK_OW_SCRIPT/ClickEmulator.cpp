@@ -22,7 +22,7 @@ namespace ClickEmulator
 
 			return FALSE;
 		}
-		Sleep(delay);
+		SleepEx(delay, FALSE);
 
 		input.ki.dwFlags = KEYEVENTF_KEYUP;
 		if (SendInput(1, &input, sizeof(INPUT)) != 1)
@@ -46,7 +46,7 @@ namespace ClickEmulator
 
 			return FALSE;
 		}
-		Sleep(delay);
+		SleepEx(delay, FALSE);
 
 		input.mi.dwFlags = (button <<= 1);
 		if (SendInput(1, &input, sizeof(INPUT)) != 1)
@@ -77,7 +77,7 @@ namespace ClickEmulator
 
 			return FALSE;
 		}
-		Sleep(time);
+		SleepEx(time, FALSE);
 
 		return TRUE;
 	}

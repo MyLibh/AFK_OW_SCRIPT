@@ -46,7 +46,7 @@ int main()
 			enabled = !enabled;
 
 			Log(std::string_view(enabled ? "Enabled" : "Disabled"), std::clog);
-			Sleep(6 * TIME_DIFF);
+			SleepEx(6 * TIME_DIFF, FALSE);
 		}
 		
 		if (enabled && std::difftime(std::clock(), tmr) > TIME_DIFF)
@@ -61,7 +61,7 @@ int main()
 			Debug("Key=" + std::to_string(keys[i]) + ", mouse=" + std::to_string(mouse[j]), std::clog);
 		}
 
-		Sleep(TIME_DIFF);
+		SleepEx(TIME_DIFF, FALSE);
 	}
 	Log(std::string_view("Script ended"), std::clog);
 

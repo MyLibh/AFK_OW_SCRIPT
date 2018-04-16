@@ -20,8 +20,8 @@
 #error
 #endif /* !defined (WIN32) && !defined (__WIN32__) && !defined(_WIN32) && !defined(_WIN32_WINNT) */
 
-typedef unsigned short WORD;
-typedef unsigned long DWORD;
+typedef unsigned short WORD; //-V677
+typedef unsigned long DWORD; //-V677
 
 struct tagPOINT;
 typedef tagPOINT *PPOINT;
