@@ -174,9 +174,51 @@ namespace ClickEmulator
 
 #pragma region FUNCTION_DECLARATION
 
-	bool PressKey(WORD, DWORD);
-	bool PressMouse(WORD, DWORD);
-	bool MoveMouse(WORD, const PPOINT, DWORD);
+	//====================================================================================================================================
+	//!
+	//! \brief	 Emulates key pressing
+	//!
+	//! \param   key    Key to emulate
+	//! \param   delay  Delay to wait
+	//!
+	//! \return  Success of the function
+	//!
+	//! \throw   std::runtime_error     
+	//!
+	//====================================================================================================================================
+
+	bool PressKey(WORD key, DWORD delay);
+
+	//====================================================================================================================================
+	//!
+	//! \brief	 Emulates mouse pressing
+	//!
+	//! \param   button  Button to emulate
+	//! \param   time    Delay to wait
+	//!
+	//! \return  Success of the function
+	//!
+	//! \throw   std::runtime_error     
+	//!
+	//====================================================================================================================================
+
+	bool PressMouse(WORD button, DWORD delay);
+
+	//====================================================================================================================================
+	//!
+	//! \brief	 Emulates mouse moving
+	//!
+	//! \param   event   Mouse move event
+	//! \param   cPoint  Dx/Dy for moving, if nullptr then uses special formula
+	//! \param   delay   Delay to wait
+	//!
+	//! \return  Success of the function
+	//!
+	//! \throw   std::runtime_error     
+	//!
+	//====================================================================================================================================
+
+	bool MoveMouse(WORD event, const PPOINT cPoint, DWORD delay);
 
 #pragma endregion
 

@@ -10,7 +10,7 @@ namespace ClickEmulator
 
 #pragma region FUNCTION_DEFINITION
 
-	bool PressKey(WORD key, DWORD time)
+	bool PressKey(WORD key, DWORD delay)
 	{
 		INPUT input = { INPUT_KEYBOARD };
 		input.ki.wScan = MapVirtualKey(key, MAPVK_VK_TO_VSC);
@@ -22,7 +22,7 @@ namespace ClickEmulator
 
 			return FALSE;
 		}
-		Sleep(time);
+		Sleep(delay);
 
 		input.ki.dwFlags = KEYEVENTF_KEYUP;
 		if (SendInput(1, &input, sizeof(INPUT)) != 1)
@@ -35,23 +35,23 @@ namespace ClickEmulator
 		return TRUE;
 	}
 
-	bool PressMouse(WORD key, DWORD time)
+	bool PressMouse(WORD button, DWORD delay)
 	{
 		INPUT input = { INPUT_MOUSE };
-		input.mi.dwFlags = key;
+		input.mi.dwFlags = button;
 
 		if (SendInput(1, &input, sizeof(INPUT)) != 1)
 		{
-			Error(std::string_view("Cannot send input(INPUT_MOUSE) with flag(" + std::to_string(key) + ")"), std::cerr);
+			Error(std::string_view("Cannot send input(INPUT_MOUSE) with flag(" + std::to_string(button) + ")"), std::cerr);
 
 			return FALSE;
 		}
-		Sleep(time);
+		Sleep(delay);
 
-		input.mi.dwFlags = (key <<= 1);
+		input.mi.dwFlags = (button <<= 1);
 		if (SendInput(1, &input, sizeof(INPUT)) != 1)
 		{
-			Error(std::string_view("Cannot send input(INPUT_MOUSE) with flag(" + std::to_string(key) + ")"), std::cerr);
+			Error(std::string_view("Cannot send input(INPUT_MOUSE) with flag(" + std::to_string(button) + ")"), std::cerr);
 
 			return FALSE;
 		}
