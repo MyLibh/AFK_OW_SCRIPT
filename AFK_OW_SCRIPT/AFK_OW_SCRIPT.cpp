@@ -7,7 +7,7 @@
 
 constexpr size_t KEYS_NUM  = 8,
 			     MOUSE_NUM = 2,
-			     TIME_DIFF = 100;
+			     TIME_DIFF = 1;
 
 using namespace ClickEmulator;
 using namespace NDebugger;
@@ -46,7 +46,7 @@ int main()
 			enabled = !enabled;
 
 			Log(std::string_view(enabled ? "Enabled" : "Disabled"), std::clog);
-			SleepEx(6 * TIME_DIFF, FALSE);
+			SleepEx(100 * TIME_DIFF, FALSE);		
 		}
 		
 		if (enabled && std::difftime(std::clock(), tmr) > TIME_DIFF)
